@@ -1,33 +1,33 @@
 # 🧨 blkinjector
 
-### 🔓 Write files directly to ext2/3/4 block devices — bypassing Auditd, syscall logging, and all that noise.
-
-blkinjector is a low-level Linux utility that injects file content into a filesystem image or block device directly via raw access — no open(), no write(), no unlink(), and **no trace for Auditd** to catch.
+**blkinjector** is a low-level Linux utility that enables direct file injection into ext2/3/4 filesystems via raw block access. By avoiding standard system calls (`open()`, `write()`, `unlink()`), it evades syscall-based monitoring tools such as Auditd and EDR solutions—making it an ideal tool for stealth operations and security research.
 
 ---
 
-## 🧠 Why?
+## 🎯 Purpose
 
-Because sometimes, stealth is everything.
+Modern security solutions monitor system calls to detect malicious or unauthorized activity. `blkinjector` bypasses these mechanisms by operating entirely at the disk level, enabling forensic, Red Team, or research use cases where stealth and minimal footprint are essential.
 
-Auditd, EDRs, and syscall monitors watch everything you do — unless...  
-you **never use a syscall** to begin with.
+---
 
-With blkinjector, you:
-- Replace files on-disk without mounting the FS
-- Avoid Auditd and file access logs
-- Act like debugfs, but fully scriptable and weaponized
+## ✅ Key Features
+
+- 🔒 **Syscall-Free File Injection** – Avoids `open()`, `write()`, and other detectable syscalls
+- 💾 **Supports ext2, ext3, ext4** – Works directly with standard Linux filesystems
+- 🧱 **Raw Disk or Image Targeting** – Operates on both live devices (`/dev/sdX`) and image files
+- ⚙️ **Scriptable Interface** – Designed for automation in Red Team tooling or research pipelines
+- 🛑 **No Filesystem Mounting Required**
 
 ---
 
 ## ⚠️ Disclaimer
 
-**This tool is for educational and authorized security research only.**  
-Don’t use it on live systems you don’t own.
+This tool is intended **strictly for authorized security testing and educational use**.  
+Use only on systems you own or have explicit permission to analyze. Misuse may violate laws and ethical guidelines.
 
 ---
 
 ## 💻 Usage
 
-bash
-sudo ./blkinjector <device.img or /dev/sdX> <source_file> 
+```bash
+sudo ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
