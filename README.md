@@ -41,6 +41,17 @@ Use only on systems you own or have explicit permission to test.
 git clone git@github.com:vahidmalekk/blkinjector.git
 cd blkinjector
 gcc blkinjector.c -o blkinjector -lext2fs -lcom_err
+run `lsblk` command for detecting block device
 sudo ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
 example: ./blkinjector /dev/vda1 /tmp/passwd /etc/passwd
 To clear the cache immediately, run the following command: echo 3 > /proc/sys/vm/drop_caches
+
+OR you can download the binary and run it
+wget https://github.com/vahidmalekk/blkinjector/releases/download/v/blkinjector
+chmod +x blkinjector
+lsblk
+./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
+example: ./blkinjector /dev/vda1 /tmp/a/passwd /etc/passwd
+echo 3 > /proc/sys/vm/drop_caches
+
+
