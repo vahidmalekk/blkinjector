@@ -1,29 +1,37 @@
 # 🧨 blkinjector
 
-**blkinjector** is a low-level Linux utility that enables direct file injection into ext2/3/4 filesystems via raw block access. By avoiding standard system calls (`open()`, `write()`, `unlink()`), it evades syscall-based monitoring tools such as Auditd and EDR solutions—making it an ideal tool for stealth operations and security research.
+**blkinjector** is a Linux tool that replaces files inside ext2/3/4 filesystems by directly writing to the block device or image using the `libext2fs` library. While it operates below the typical file I/O level, it still uses system calls — making it a stealthier but not syscall-free method.
 
 ---
 
-## 🎯 Purpose
+## 🎯 Overview
 
-Modern security solutions monitor system calls to detect malicious or unauthorized activity. `blkinjector` bypasses these mechanisms by operating entirely at the disk level, enabling forensic, Red Team, or research use cases where stealth and minimal footprint are essential.
-
----
-
-## ✅ Key Features
-
-- 🔒 **Syscall-Free File Injection** – Avoids `open()`, `write()`, and other detectable syscalls
-- 💾 **Supports ext2, ext3, ext4** – Works directly with standard Linux filesystems
-- 🧱 **Raw Disk or Image Targeting** – Operates on both live devices (`/dev/sdX`) and image files
-- ⚙️ **Scriptable Interface** – Designed for automation in Red Team tooling or research pipelines
-- 🛑 **No Filesystem Mounting Required**
+`blkinjector` is intended for low-level manipulation of ext-based filesystems for use in research, recovery, or red teaming scenarios. It allows replacing file contents without mounting the filesystem and without interacting with the Virtual Filesystem (VFS) layer.
 
 ---
 
-## ⚠️ Disclaimer
+## ✅ Features
 
-This tool is intended **strictly for authorized security testing and educational use**.  
-Use only on systems you own or have explicit permission to analyze. Misuse may violate laws and ethical guidelines.
+- Writes directly to block devices or image files
+- Targets ext2/ext3/ext4 filesystems
+- Avoids VFS-level interactions (e.g., `open("/etc/passwd")`)
+- More stealthy than traditional file operations
+- Useful for forensic testing, malware emulation, and recovery
+
+---
+
+## ⚠️ Limitations
+
+- Uses standard C and `libext2fs` functions — **does not eliminate syscalls**
+- Not undetectable: tools monitoring `/dev` access or `auditd` rules on block devices may still log activity
+- Does not bypass LSM (e.g., SELinux) if monitoring `/dev/sdX` directly
+
+---
+
+## ⚠️ Legal Notice
+
+This tool is provided for **educational and authorized security testing only**.  
+Use only on systems you own or have explicit permission to test.
 
 ---
 
