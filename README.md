@@ -40,6 +40,7 @@ Use only on systems you own or have explicit permission to test.
 ```bash
 git clone git@github.com:vahidmalekk/blkinjector.git
 cd blkinjector
+gcc blkinjector.c -o blkinjector -lext2fs -lcom_err
 sudo ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
 example: ./blkinjector /dev/vda1 /tmp/passwd /etc/passwd
 To clear the cache immediately, run the following command: echo 3 > /proc/sys/vm/drop_caches
