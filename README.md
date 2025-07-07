@@ -23,8 +23,8 @@
 ## ⚠️ Limitations
 
 - Uses standard C and `libext2fs` functions — **does not eliminate syscalls**
-- Not undetectable: tools monitoring `/dev` access or `auditd` rules on block devices may still log activity
-- Does not bypass LSM (e.g., SELinux) if monitoring `/dev/sdX` directly
+- Not undetectable: tools monitoring `/dev` access or `auditd` rules on block devices may still log activity but i havent seen that yet.
+- Does not bypass LSM (e.g., SELinux) if monitoring `/dev` directly
 
 ---
 
