@@ -38,4 +38,8 @@ Use only on systems you own or have explicit permission to test.
 ## 💻 Usage
 
 ```bash
+git clone git@github.com:vahidmalekk/blkinjector.git
+cd blkinjector
 sudo ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
+example: ./blkinjector /dev/vda1 /tmp/passwd /etc/passwd
+To clear the cache immediately, run the following command: echo 3 > /proc/sys/vm/drop_caches
