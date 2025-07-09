@@ -1,6 +1,6 @@
 # 🧨 blkinjector
 
-blkinjector is a Linux tool that replaces files within ext2/3/4 filesystems by directly writing to the block device or disk image using the libext2fs library. Its primary goal is to bypass auditd file watch mechanisms. While it operates below the typical file I/O level, it still uses system calls — making it a stealthier but not syscall-free method.
+`blkinjector` is a Linux tool that replaces files within ext2/3/4 filesystems by directly writing to the block device or disk image using the libext2fs library. Its primary goal is to bypass auditd file watch mechanisms. While it operates below the typical file I/O level, it still uses system calls — making it a stealthier but not syscall-free method.
 
 ---
 
