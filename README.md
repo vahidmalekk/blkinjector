@@ -1,6 +1,6 @@
 # 🧨 blkinjector
 
-**blkinjector** is a Linux tool that replaces files inside ext2/3/4 filesystems by directly writing to the block device or image using the `libext2fs` library. While it operates below the typical file I/O level, it still uses system calls — making it a stealthier but not syscall-free method.
+blkinjector is a Linux tool that replaces files within ext2/3/4 filesystems by directly writing to the block device or disk image using the libext2fs library. Its primary goal is to bypass auditd file watch mechanisms. While it operates below the typical file I/O level, it still uses system calls — making it a stealthier but not syscall-free method.
 
 ---
 
@@ -16,7 +16,7 @@
 - Targets ext2/ext3/ext4 filesystems
 - Avoids VFS-level interactions (e.g., `open("/etc/passwd")`)
 - More stealthy than traditional file operations
-- Useful for forensic testing, malware emulation, and recovery
+
 
 ---
 
@@ -45,7 +45,8 @@ run `lsblk` command for detecting block device
 sudo ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
 example: ./blkinjector /dev/vda1 /tmp/passwd /etc/passwd
 To clear the cache immediately, run the following command: echo 3 > /proc/sys/vm/drop_caches
-
+```
+```bash
 OR you can download the binary and run it
 wget https://github.com/vahidmalekk/blkinjector/releases/download/v/blkinjector
 chmod +x blkinjector
@@ -53,5 +54,5 @@ lsblk
 ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
 example: ./blkinjector /dev/vda1 /tmp/a/passwd /etc/passwd
 echo 3 > /proc/sys/vm/drop_caches
-
+```
 
