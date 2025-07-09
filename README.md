@@ -46,8 +46,9 @@ sudo ./blkinjector <device.img | /dev/sdX> <source_file> <target_path_in_fs>
 example: ./blkinjector /dev/vda1 /tmp/passwd /etc/passwd
 To clear the cache immediately, run the following command: echo 3 > /proc/sys/vm/drop_caches
 ```
-```bash
+
 OR you can download the binary and run it
+```bash
 wget https://github.com/vahidmalekk/blkinjector/releases/download/v/blkinjector
 chmod +x blkinjector
 lsblk
