@@ -30,8 +30,7 @@
 
 ## ⚠️ Legal Notice
 
-This tool is provided for **educational and authorized security testing only**.  
-Use only on systems you own or have explicit permission to test.
+This tool is provided for **educational and authorized security testing only**.Use only on systems you own or have explicit permission to test.
 
 ---
 
